@@ -1,0 +1,14 @@
+#user{
+    width: 200px;
+    margin-left: 534px;
+    
+}
+#password{
+    width: 200px;
+    margin-left: 534px;
+}
+.error {
+    color: #cc0000;
+    margin-bottom: 12px;
+  }
+  

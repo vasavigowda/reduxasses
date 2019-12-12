@@ -1,25 +1,74 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import {username,password} from '../Action/LoginAction';
+import './Login.css';
+import BrowserHistory from "./Utils/BrowserHistory";
 
-class Login extends Component {
-    render() {
-        return (
-            <div>
-                <label>UserName:</label>
-                <input type="text"   name="username" onclick={this.props.username}></input>
-                <label>Password:</label>
-                <input type="password"  name="password" onclick={this.props.password}></input>
-                <button>login</button>
-                <button>Register</button>
-            </div>
-        );
+const initialState = {
+  name: "",
+  password: "",
+  nameError: "",
+  passwordError: ""
+};
+export default class Login extends React.Component {
+  state = initialState;
+
+  handleChange = event => {
+    const isCheckbox = event.target.type === "checkbox";
+    this.setState({
+      [event.target.name]: isCheckbox
+        ? event.target.checked
+        : event.target.value
+    });
+  };
+
+  validate = () => {
+    let nameError = "";
+    let passwordError = "";
+
+    if (!this.state.name) {
+      nameError = "name should be enter";
     }
+
+    if (!this.state.password ){
+        passwordError = "password should be enter";
+    }
+
+    if (passwordError || nameError) {
+      this.setState({ passwordError, nameError });
+      return false;
+    }
+
+    return true;
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const isValid = this.validate();
+    if (isValid) {
+    this.setState(initialState);
+    }
+  };
+  onHandleClick(){
+    BrowserHistory.push("/Register");
+    }
+  render() {
+    return (
+      <div>
+       <h1>Login </h1>
+      <form onSubmit={this.handleSubmit}>
+        <div>
+          <label>UserName :</label>
+          <input name="name" placeholder="name" value={this.state.name} onChange={this.handleChange} id="user"/>
+          <div className="error" > {this.state.nameError}</div><br></br>
+        </div>
+        <div>
+        <label>Password :</label>
+          <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange} id="password"/>
+          <div className="error">{this.state.passwordError}</div><br></br>
+        </div>
+       <div><button type="submit">Login</button></div> 
+      </form>
+      <div ><button onClick={this.onHandleClick} className="button">Register</button></div>
+      </div>
+    );
+  }
 }
-
-    const mapStoreToProps=(state)=>{
-    const{username,password}=state.LoginReducer;
-    return {username,password};
-    }
-  
-    export default connect(mapStoreToProps,{username,password})(Login);

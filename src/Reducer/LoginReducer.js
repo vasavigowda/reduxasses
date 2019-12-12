@@ -14,7 +14,11 @@ export default(state=initialState,action)=>{
         case ActionTypes.password:{
             return{...state,password:''}
         }
+    // switch(){
+    //     if()
+    // }
         default:
             return state;
     }
 }
+
