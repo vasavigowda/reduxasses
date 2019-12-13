@@ -1,41 +1,59 @@
 import React, { Component } from 'react';
 
-const initialState = {
-    name: "",
-    password: "",
-    nameError: "",
-    passwordError: ""
-  };
+
 class Users extends Component {
-    state = initialState;
-    handleChange = event => {
-        const isCheckbox = event.target.type === "checkbox";
+ 
+      constructor(props){
+        super(props);
+        this.state = {
+            todos: [],
+            todo: ''
+        }
+        this.changeTodo = this.changeTodo.bind(this);
+        this.addTodo = this.addTodo.bind(this);
+       
+    }
+
+    changeTodo(event){
         this.setState({
-          [event.target.name]: isCheckbox
-            ? event.target.checked
-            : event.target.value
-        });
-      };
-      add_data =event=>{
-          const name=
+            todo: event.target.value
+        })
+    }
+
+    addTodo(){
+        let { todo, todos } = this.state;
+        this.setState({
+            todo: '',
+            todos: [...todos, todo]
+        })
+    }
+
+    removeTodo(index){
+        let { todos } = this.state;
+        todos.splice(index, 1);
+        this.setState({
+            todos: todos
+        })
       }
     render() {
+      let { todo, todos } = this.state;
         return (
             <div>
-                <div>
-          <label>UserName :</label><br/>
-          <input name="name" placeholder="name" value={this.state.name} onChange={this.handleChange} id="users"/>
-          <div className="error" > {this.state.nameError}</div><br></br>
+             
+        <label>UserName:</label>
+        <input value={todo} onChange={this.changeTodo}/><br/>
+        <button onClick={this.addTodo}>Add Todo</button>
+       
+            {
+             todos.map((todo, index)=>{
+                   return <h1 onClick={this.addTodo.bind(undefined, index)} key={index}>{todo}</h1>
+                })
+            }  
+             
         </div>
-        <div>
-        <label>Password :</label><br/>
-          <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange} id="passwords"/>
-          <div className="error">{this.state.passwordError}</div><br></br>
-        </div>
-        <div><button type="submit" onClick={this.add_data}>Add newUser</button></div> 
-            </div>
-        );
-    }
+    )
+  }
 }
-
+            
+      
 export default Users;

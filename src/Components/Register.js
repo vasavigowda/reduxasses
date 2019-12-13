@@ -101,7 +101,9 @@ class Register extends Component {
   
       }
   
-  
+      onHandleClick(){
+        BrowserHistory.push("/Login");
+        }
   
     render() {
       return (
@@ -122,6 +124,7 @@ class Register extends Component {
           <input type="password" name="password" value={this.state.fields.password} onChange={this.handleChange} />
           <div className="errorMsg">{this.state.errors.password}</div>
           <input type="submit" className="button"  value="Register"/>
+          <div ><button onClick={this.onHandleClick} className="button">Login</button></div>
           </form>
       </div>
   </div>
