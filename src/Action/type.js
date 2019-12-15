@@ -1,2 +1,4 @@
-export const  username='username';
-export const password='password';
+
+
+export const SAVE='handleChange';
+export const CHECK='CHECK';

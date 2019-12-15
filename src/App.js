@@ -8,20 +8,24 @@ import Users from './Components/Users';
 
 import PostForm from './Components/PostForm';
 import AllPost from './Components/AllPost';
+import Page1 from './Components/Page1';
 
 function App() {
   return (
-    <div className="App">
-            <Router>
-        <switch>
+     <div className="App">
+             <Router>
+         <switch>
         <Route exact path='/login' component={Login}></Route> 
-        <Route exact path='/' component={Register}></Route> 
-        <Route exact path='/app' component={Users}></Route> 
-        <Route exact path='/Allpost' component={PostForm}></Route>
-        <Route exact path='/Allpost' component={AllPost}></Route>
-        </switch>
-      </Router>
+         <Route exact path='/Register' component={Register}></Route> 
+         <Route exact path='/app' component={Users}></Route> 
+         <Route exact path='/Allpost' component={PostForm}></Route>
+         <Route exact path='/Allpost' component={AllPost}></Route>
+         
+         </switch>
+       </Router>
      
+    
+    
     </div>
   );
 }

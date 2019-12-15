@@ -1,12 +1,14 @@
 import *as ActionTypes from './type';
 
-export function  username(){
-    return function(dispatch){
-        dispatch({type:' username'})
-    }
+export function handleChange(event){
+return function(dispatch)
+{
+dispatch({type:'SEND',payload:event.target});
 }
-export function password(){
-    return function(dispatch){
-        dispatch({type:'password'})
-    }
+}
+export function check(){
+return function(dispatch)
+{
+dispatch({type:'CHECK'});
+}
 }

@@ -50,24 +50,27 @@ export default class Login extends React.Component {
   onHandleClick(){
     BrowserHistory.push("/Register");
     }
+    HandleClick(){
+      BrowserHistory.push("/Allpost");
+      }
   render() {
     return (
       <div>
        <h1>Login </h1>
       <form onSubmit={this.handleSubmit}>
         <div>
-          <label>UserName :</label>
+          <label>UserName</label>
           <input name="name" placeholder="name" value={this.state.name} onChange={this.handleChange} id="user"/>
           <div className="error" > {this.state.nameError}</div><br></br>
         </div>
         <div>
-        <label>Password :</label>
+        <label>Password</label>
           <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange} id="password"/>
           <div className="error">{this.state.passwordError}</div><br></br>
         </div>
-       <div><button type="submit">Login</button></div> 
+       <div><button type="submit" id="btn" onClick={this.HandleClick}>Login</button></div> 
       </form>
-      <div ><button onClick={this.onHandleClick} className="button">Register</button></div>
+      <div ><button onClick={this.onHandleClick} id="button">Register</button></div>
       </div>
     );
   }

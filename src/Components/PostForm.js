@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EditComponent from './EditComponent';
+import './Postform.css';
+
 class PostForm extends Component {
 handleSubmit = (e) => {
 e.preventDefault();
@@ -23,12 +25,14 @@ this.getMessage.value = '';
 render() {
 return (
 <div className="post-container">
-<h1 className="post_heading">Create Post</h1>
+<h1 className="post_heading">Add User</h1>
 <form className="form" onSubmit={this.handleSubmit} >
-<input id ="post"required type="text" ref={(input) => this.getTitle = input }
-placeholder="Enter Post Title" /><br /><br />
+<h4>Name</h4>
+<input id ="post" required type="text" ref={(input) => this.getTitle = input }
+placeholder="Enter name" /><br /><br />
+<h4>User name</h4>
 <input id="post" required rows="5" ref={(input) => this.getMessage = input}
-cols="28" placeholder="Enter Post" /><br /><br />
+cols="28" placeholder="Enter last name" /><br /><br />
 
 <button>Update</button>
 </form>
