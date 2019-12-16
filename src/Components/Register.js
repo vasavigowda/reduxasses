@@ -96,14 +96,13 @@ class Register extends Component {
         this.setState({
           errors: errors
         });
+        
         return formIsValid;
       }
       onHandleClick(){
         BrowserHistory.push("/login");
         }
-        HandleClick(){
-          BrowserHistory.push("/Allpost");
-          }
+        
     
     render() {
       return (
@@ -123,7 +122,7 @@ class Register extends Component {
           <label>Password</label>
           <input type="password" name="password" value={this.state.fields.password} onChange={this.handleChange} />
           <div className="errorMsg">{this.state.errors.password}</div>
-          <input type="submit" className="button" id="button" value="Register" onClick={this. HandleClick}/>
+          <input type="submit" className="button" id="button" value="Register"/>
           <div ><button onClick={this.onHandleClick} className="button" id="btn">Login</button></div>
           </form>
       </div>

@@ -36,9 +36,11 @@ export default class Login extends React.Component {
       this.setState({ passwordError, nameError });
       return false;
     }
-
+    BrowserHistory.push("/Allpost");
     return true;
+   
   };
+ 
 
   handleSubmit = event => {
     event.preventDefault();
@@ -50,9 +52,7 @@ export default class Login extends React.Component {
   onHandleClick(){
     BrowserHistory.push("/Register");
     }
-    HandleClick(){
-      BrowserHistory.push("/Allpost");
-      }
+    
   render() {
     return (
       <div>
@@ -68,7 +68,7 @@ export default class Login extends React.Component {
           <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange} id="password"/>
           <div className="error">{this.state.passwordError}</div><br></br>
         </div>
-       <div><button type="submit" id="btn" onClick={this.HandleClick}>Login</button></div> 
+       <div><button type="submit" id="btn" onClick={this.validate}>Login</button></div> 
       </form>
       <div ><button onClick={this.onHandleClick} id="button">Register</button></div>
       </div>
